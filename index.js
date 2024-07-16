@@ -131,3 +131,18 @@ function removeFromCart(index) {
     cart.splice(index, 1); // Remove the item from the cart array
     renderCart(); // Re-render the cart to update the display
 }
+
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const serviceID = 'service_hpfe08l';
+    const templateID = 'template_6meieuc';
+
+    // Use emailjs to send the form data
+    emailjs.sendForm(serviceID, templateID, this)
+        .then(() => {
+            alert('Message sent successfully!');
+        }, (err) => {
+            alert('Failed to send message. Error: ' + JSON.stringify(err));
+        });
+});

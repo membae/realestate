@@ -1,0 +1,41 @@
+{
+    "House":[
+       {
+        "id":1,
+        "title":"one-bedroom",
+        "slots":10,
+        "taken_slots":7,
+        "location":"nairobi",
+        "living-room":"images/1bl.jpg",
+        "kitchen":"images/1bk.jpg",       
+        "bedroom":"images/1bb.jpg",
+        "mainpic":"images/1b.jpg",
+        "description":"some content"
+       },
+       {
+       "id":2,
+        "title":"two-bedroom",
+        "slots":20,
+        "taken_slots":17,
+        "location":"nakuru",
+        "living-room":"images/2bl.jpg",
+        "kitchen":"images/2bk.jpg",       
+        "bedroom":"images/2bb.jpg",
+        "mainpic":"images/2b.jpg",
+        "description":"content"
+       },
+       {
+        "id":3,
+        "title":"three-bedroom",
+        "slots":23,
+        "taken_slots":20,
+        "location":"mombasa",
+        "living-room":"images/3bl.jpg",
+        "kitchen":"images/3bk.jpg",       
+        "bedroom":"images/3bb.jpg",
+        "mainpic":"images/3b.jpg",
+        "description":"content some"
+       }
+
+    ]
+}

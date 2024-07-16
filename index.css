@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#sec1 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    border: 10px solid #ccc;
+}
+#sec2 {
+    display: flex;
+    flex-direction: column;
+    
+    padding: 10px;
+    width: 100%;
+}
+
+#mainpic{
+    width: 10%;
+
+}
+header {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+#cart {
+    margin-top: 10px;
+}
+
+#cart h2 {
+    margin: 0 0 10px;
+}
+
+#cart-items ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#cart-items li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+#cart-items button {
+    margin-left: 10px;
+}
+

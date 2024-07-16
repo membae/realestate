@@ -1,97 +1,86 @@
+// Fetch data from your API or JSON file
 fetch("http://localhost:3000/House")
-.then((res)=>res.json())
-.then((data)=>{
-    data.forEach(element => {
+    .then((res) => res.json())
+    .then((data) => {
+        const list = document.getElementById("sec1");
 
-        const list=document.getElementById("sec1");
-        const inerlist=document.createElement("div")
-        const imgdiv=document.createElement("div")
-        imgdiv.id="imgdiv"
-        inerlist.id="sec2";
-        
+        data.forEach((element) => {
+            // Create main container for each house listing
+            const houseContainer = document.createElement("div");
+            houseContainer.classList.add("house-container");
 
+            // Create container for image and specifications
+            const flexContainer = document.createElement("div");
+            flexContainer.classList.add("flex-container");
 
+            // Image container
+            const imgDiv = document.createElement("div");
+            imgDiv.classList.add("image-container");
 
-        const title=document.createElement("h2")
-        title.textContent=element.title
-        title.id="title"
-        inerlist.appendChild(title)
+            // Create and append the image
+            const mainpic = document.createElement("img");
+            mainpic.src = element.mainpic;
+            mainpic.classList.add("house-image");
+            imgDiv.appendChild(mainpic);
 
-        const mainpic=document.createElement("img")
-        mainpic.src=element.mainpic;
-        mainpic.id="mainpic";
-        imgdiv.appendChild(mainpic)
+            // Append image container to flex container
+            flexContainer.appendChild(imgDiv);
 
-        const location=document.createElement("p")
-        location.textContent=`Location:${element.location}`
-        location.id="location"
-        inerlist.appendChild(location)
+            // Details container
+            const detailsDiv = document.createElement("div");
+            detailsDiv.classList.add("details");
 
+            // Create and append the title
+            const title = document.createElement("h2");
+            title.textContent = element.title;
+            detailsDiv.appendChild(title);
 
-        const slots=document.createElement("p")
-        slots.textContent=`Slots:${element.slots}`
-        slots.id="slots"
-        inerlist.appendChild(slots)
+            // Create and append location
+            const location = document.createElement("p");
+            location.textContent = `Location: ${element.location}`;
+            detailsDiv.appendChild(location);
 
-        const available_slots=document.createElement("p")
-        available_slots.textContent=`Available slots:${element.slots-element.taken_slots}`
-        available_slots.id="available_slots"
-        inerlist.appendChild(available_slots)
+            // Create and append slots
+            const slots = document.createElement("p");
+            slots.textContent = `Slots: ${element.slots}`;
+            detailsDiv.appendChild(slots);
 
+            // Create and append available slots
+            const availableSlots = document.createElement("p");
+            availableSlots.textContent = `Available slots: ${element.slots - element.taken_slots}`;
+            detailsDiv.appendChild(availableSlots);
 
-        const btn=document.createElement("button")
-        btn.id="btn"
-        btn.textContent="buy a house"
-        btn.addEventListener('click', () => {
-            if (element.taken_slots < element.slots) {
-                element.taken_slots++;
-                available_slots.textContent = `Available slots: ${element.slots - element.taken_slots}`;
-                alert("You just got yourself a house");
-                if (element.taken_slots >= element.slots) {
-                    btn.textContent = "SOLD OUT!";
-                    btn.disabled = true;
+            // Create "Buy a house" button
+            const btn = document.createElement("button");
+            btn.textContent = "Buy a house";
+            btn.addEventListener('click', () => {
+                if (element.taken_slots < element.slots) {
+                    element.taken_slots++;
+                    availableSlots.textContent = `Available slots: ${element.slots - element.taken_slots}`;
+                    alert("You just got yourself a house");
+                    if (element.taken_slots >= element.slots) {
+                        btn.textContent = "SOLD OUT!";
+                        btn.disabled = true;
+                    }
                 }
-            } 
-           
+            });
+            detailsDiv.appendChild(btn);
+
+            // Create and append description
+            const description = document.createElement("p");
+            description.textContent = `Description: ${element.description}`;
+            detailsDiv.appendChild(description);
+
+            // Append details container to flex container
+            flexContainer.appendChild(detailsDiv);
+
+            // Append flex container to house container
+            houseContainer.appendChild(flexContainer);
+
+            // Append house container to main list container
+            list.appendChild(houseContainer);
         });
-        inerlist.appendChild(btn);
-       
-
-
-        
-
-
-        // const kitchen=document.createElement("img")
-        // kitchen.src=element.kitchen;
-        // kitchen.id="kichen";
-        // inerlist.appendChild(kitchen)
-
-
-        // const bedroom=document.createElement("img")
-        // bedroom.src=element.bedroom;
-        // bedroom.id="bedroom";
-        // inerlist.appendChild(bedroom)
-
-
-        const description=document.createElement("p")
-        description.textContent=`Description:${element.description}`
-        description.id="description"
-        inerlist.appendChild(description)
-
-        const addToCartBtn = document.createElement("button");
-        addToCartBtn.textContent = "Add to Cart";
-        addToCartBtn.addEventListener("click", () => addToCart(element));
-        inerlist.appendChild(addToCartBtn);
-
-
-        
-
-        list.appendChild(imgdiv)
-        list.appendChild(inerlist)
-       
-
     });
-})
 
 let cart = [];
 
@@ -134,7 +123,7 @@ function removeFromCart(index) {
 
 document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
-
+    
     const serviceID = 'service_hpfe08l';
     const templateID = 'template_6meieuc';
 
@@ -145,4 +134,5 @@ document.getElementById('contact-form').addEventListener('submit', function(even
         }, (err) => {
             alert('Failed to send message. Error: ' + JSON.stringify(err));
         });
+        
 });

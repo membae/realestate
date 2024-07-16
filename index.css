@@ -10,6 +10,11 @@ header h1 {
     flex-grow: 1; /* This makes the h1 element take up remaining space */
     text-align: center; /* This centers the text within the h1 */
 }
+.cartIcon{
+    font-size: 30px;
+    margin-top: 45px;
+    margin-right: 10px;
+}
 
 #cart {
     margin-right: 100px; /* This pushes the cart to the far right */

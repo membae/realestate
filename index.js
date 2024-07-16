@@ -121,7 +121,8 @@ function removeFromCart(index) {
     renderCart(); // Re-render the cart to update the display
 }
 
-document.getElementById('contact-form').addEventListener('submit', function(event) {
+document.getElementById('contact-form')
+.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
     
     const serviceID = 'service_hpfe08l';

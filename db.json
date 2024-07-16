@@ -1,7 +1,19 @@
 {
     "House":[
-       {
+    {
         "id":1,
+        "title":"bedsitter",
+        "slots":40,
+        "taken_slots":7,
+        "location":"nairobi",
+        "living_room":"images/bsb.jpg",
+        "kitchen":"images/bsk.jpg",       
+        "bedroom":"images/bsbath.jpg",
+        "mainpic":"images/bs.jpg",
+        "description":"Compact and cozy living space ideal for individuals or couples, featuring an open-plan layout combining living, sleeping, and dining areas"
+        },
+       {
+        "id":2,
         "title":"one-bedroom",
         "slots":10,
         "taken_slots":7,
@@ -10,10 +22,10 @@
         "kitchen":"images/1bk.jpg",       
         "bedroom":"images/1bb.jpg",
         "mainpic":"images/1b.jpg",
-        "description":"some content"
+        "description":"A charming one-bedroom apartment offering a private retreat with separate living and sleeping spaces, perfect for singles or couples seeking comfort and privacy."
        },
        {
-       "id":2,
+       "id":3,
         "title":"two-bedroom",
         "slots":20,
         "taken_slots":17,
@@ -22,10 +34,10 @@
         "kitchen":"images/2bk.jpg",       
         "bedroom":"images/2bb.jpg",
         "mainpic":"images/2b.jpg",
-        "description":"content"
+        "description":"Spacious and versatile two-bedroom apartment providing ample room for small families or roommates, featuring separate bedrooms and a shared living area."
        },
        {
-        "id":3,
+        "id":4,
         "title":"three-bedroom",
         "slots":23,
         "taken_slots":20,
@@ -34,8 +46,7 @@
         "kitchen":"images/3bk.jpg",       
         "bedroom":"images/3bb.jpg",
         "mainpic":"images/3b.jpg",
-        "description":"content some"
+        "description":"Generously sized three-bedroom home offering plenty of space for families, with distinct living, dining, and sleeping areas, ideal for comfortable and flexible living."
        }
-
     ]
 }

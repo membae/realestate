@@ -49,12 +49,18 @@ header h1 {
     max-width: 100%;
     border-radius: 8px;
     margin-bottom: 10px;
+    cursor: pointer;
+}
+.house-image:hover{
+    transform: scale(2);
 }
 #living{
     
     display: flex;
+    transition: transform 0.3s ease;   
     
 }
+
 #kibed{
    
     display: flex;
@@ -63,13 +69,25 @@ header h1 {
 }
 #kitchen{
     max-width: 40%;
+    cursor: pointer;
+}
+#kitchen:hover{
+    transform: scale(5);
 }
 #bedroom{
     max-width: 40%;
     margin-top: 10px;
+    cursor: pointer;
+}
+#bedroom:hover{
+    transform: scale(5);
 }
 #living_room{
     max-width: 50%;
+    cursor: pointer;
+}
+#living_room:hover{
+    transform: scale(4);
 }
 
 /* Styling for the "Buy a house" button */

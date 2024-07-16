@@ -1,8 +1,8 @@
-// Fetch data from your API or JSON file
 fetch("http://localhost:3000/House")
     .then((res) => res.json())
     .then((data) => {
         const list = document.getElementById("sec1");
+        const fragment = document.createDocumentFragment(); // Use DocumentFragment
 
         data.forEach((element) => {
             // Create main container for each house listing
@@ -51,20 +51,32 @@ fetch("http://localhost:3000/House")
             detailsDiv.appendChild(availableSlots);
 
             // Create "Buy a house" button
-            const btn = document.createElement("button");
-            btn.textContent = "Buy a house";
-            btn.addEventListener('click', () => {
+            const buyBtn = document.createElement("button");
+            buyBtn.textContent = "Buy a house";
+            buyBtn.classList.add("action-button");
+            buyBtn.addEventListener('click', () => {
                 if (element.taken_slots < element.slots) {
                     element.taken_slots++;
                     availableSlots.textContent = `Available slots: ${element.slots - element.taken_slots}`;
                     alert("You just got yourself a house");
                     if (element.taken_slots >= element.slots) {
-                        btn.textContent = "SOLD OUT!";
-                        btn.disabled = true;
+                        buyBtn.textContent = "SOLD OUT!";
+                        buyBtn.disabled = true;
                     }
                 }
             });
-            detailsDiv.appendChild(btn);
+            detailsDiv.appendChild(buyBtn);
+
+            // Create "Add to Cart" button
+            const cartBtn = document.createElement("button");
+            cartBtn.textContent = "Add to Cart";
+            cartBtn.classList.add("action-button");
+            cartBtn.addEventListener('click', () => addToCart(element));
+            detailsDiv.appendChild(cartBtn);
+
+
+            
+
 
             // Create and append description
             const description = document.createElement("p");
@@ -77,26 +89,45 @@ fetch("http://localhost:3000/House")
             // Append flex container to house container
             houseContainer.appendChild(flexContainer);
 
-            // Append house container to main list container
-            list.appendChild(houseContainer);
+            // Append house container to fragment
+            fragment.appendChild(houseContainer);
         });
+
+        // Append fragment to main list container
+        list.appendChild(fragment);
     });
 
+
+
+
+    //creare show cart btn
+
+    
+
+
+
+// Define your cart array to hold items
 let cart = [];
 
+// Function to add item to cart
 function addToCart(item) {
     cart.push(item);
     alert(`${item.title} has been added to the cart.`);
-    renderCart();
+    renderCart(); // Update cart display
 }
 
+// Function to render cart info
 function renderCart() {
-    const cartContainer = document.getElementById("cart");
-    cartContainer.innerHTML = ""; // Clear the current cart contents
+    const cartDropdownContent = document.getElementById("cart-dropdown-content");
 
+    // Clear previous content
+    cartDropdownContent.innerHTML = "";
+
+    // Update cart items display
     if (cart.length === 0) {
-        cartContainer.innerHTML = "<p>The cart is empty.</p>";
+        cartDropdownContent.innerHTML = "<p>The cart is empty.</p>";
     } else {
+        const fragment = document.createDocumentFragment(); // Use DocumentFragment
         const cartList = document.createElement("ul");
 
         cart.forEach((item, index) => {
@@ -112,28 +143,63 @@ function renderCart() {
             cartList.appendChild(cartItem);
         });
 
-        cartContainer.appendChild(cartList);
+        fragment.appendChild(cartList);
+        cartDropdownContent.appendChild(fragment); // Append fragment to cart dropdown content
     }
 }
 
+// Function to remove item from cart
 function removeFromCart(index) {
     cart.splice(index, 1); // Remove the item from the cart array
     renderCart(); // Re-render the cart to update the display
 }
 
-document.getElementById('contact-form')
-.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission
-    
-    const serviceID = 'service_hpfe08l';
-    const templateID = 'template_6meieuc';
+// Function to create and insert "Show Cart" button
+function insertShowCartButton() {
+    const cartDropdown = document.querySelector(".cart-dropdown");
 
-    // Use emailjs to send the form data
-    emailjs.sendForm(serviceID, templateID, this)
-        .then(() => {
-            alert('Message sent successfully!');
-        }, (err) => {
-            alert('Failed to send message. Error: ' + JSON.stringify(err));
-        });
-        
-});
+    // Create the button element
+    const showCartButton = document.createElement("button");
+    showCartButton.textContent = "Show Cart";
+    showCartButton.classList.add("cart-dropdown-btn");
+
+    // Append the button to the cart container
+    cartDropdown.appendChild(showCartButton);
+
+    // Event listener for showing cart dropdown
+    showCartButton.addEventListener("click", function() {
+        const cartDropdownContent = document.getElementById("cart-dropdown-content");
+        cartDropdownContent.classList.toggle("show");
+    });
+}
+
+// Dummy data to simulate fetching real estate listings
+const dummyData = [
+    // { title: "House 1", image: "house1.jpg" },
+    // { title: "House 2", image: "house2.jpg" },
+    // Add more items as needed
+];
+
+// Simulate fetching real estate listings and adding to cart
+dummyData.forEach(item => addToCart(item));
+
+// Insert "Show Cart" button dynamically
+insertShowCartButton();
+
+
+document.getElementById('contact-form')
+    .addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const serviceID = 'service_hpfe08l';
+        const templateID = 'template_6meieuc';
+
+        // Use emailjs to send the form data
+        emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                alert('Message sent successfully!');
+            }, (err) => {
+                alert('Failed to send message. Error: ' + JSON.stringify(err));
+            });
+
+    });

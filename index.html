@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>phase1</title>
+    <title>Real Estate Listings</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <h1>Real Estate Listings</h1>
-    <div id="cart">
-        <h2>Cart</h2>
-        <div id="cart-items"></div>
-    </div>
-
+    <header>
+        <h1>Real Estate Listings</h1>
+        <div id="cart">
+            <h2>Cart <i class="fa-solid fa-cart-plus"></i></h2>
+            <div class="cart-dropdown">
+                <!-- Show Cart button inserted dynamically -->
+            </div>
+            <div id="cart-dropdown-content" class="cart-dropdown-content">
+                <!-- Dropdown content will be dynamically added here -->
+            </div>
+        </div>
+    </header>
     <div id="sec1">
-
+        <!-- Real estate listings will be dynamically added here -->
     </div>
-
-
-   
-    <div id="cart"></div>
 
     <div id="contact-form-container">
         <h2>Contact Me</h2>
@@ -34,7 +37,6 @@
             <button type="submit">Send Message</button>
         </form>
     </div>
-    
 
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
     <script type="text/javascript">
@@ -42,10 +44,6 @@
             emailjs.init("UGnNaYjO7PX2KZxoZ");
         })();
     </script>
-    
-
-
-
     <script src="index.js"></script>
 </body>
 </html>

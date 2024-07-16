@@ -23,6 +23,39 @@ fetch("http://localhost:3000/House")
             mainpic.classList.add("house-image");
             imgDiv.appendChild(mainpic);
 
+
+            const living=document.createElement("div")
+            living.id="living"
+            const kibed =document.createElement("div")
+            kibed.id="kibed"
+
+            const living_room=document.createElement("img")
+            living_room.src=element.living_room;
+            living_room.id="living_room"
+            living.appendChild(living_room)
+
+
+            const kitchen = document.createElement("img");
+            kitchen.src = element.kitchen;
+            kitchen.id="kitchen"
+            kibed.appendChild(kitchen)
+
+            const bedroom = document.createElement("img");
+            bedroom.src = element.bedroom;
+            bedroom.id="bedroom"
+            kibed.appendChild(bedroom)
+
+
+
+            living.appendChild(kibed)
+            imgDiv.appendChild(living)
+
+
+            // const kitchen=document.createElement("img")
+            // kitchen.src=element.kitchen;
+            // kitchen.id="kitchen"
+            // imgDiv.appendChild(kitchen)
+
             // Append image container to flex container
             flexContainer.appendChild(imgDiv);
 

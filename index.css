@@ -1,9 +1,15 @@
 /* Flex container for house listings */
 header {
     display: flex;
-    justify-content: space-between; /* This ensures the cart is at the far right */
-    align-items: center; /* This vertically centers the items */
-    padding: 0 20px; /* Optional: Add some padding for better spacing */
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+    
+    top: 0; /* Align the header to the top */
+    width: 100%; /* Ensure the header spans the full width of the page */
+    z-index: 1000; /
 }
 
 header h1 {
@@ -43,6 +49,27 @@ header h1 {
     max-width: 100%;
     border-radius: 8px;
     margin-bottom: 10px;
+}
+#living{
+    
+    display: flex;
+    
+}
+#kibed{
+   
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+#kitchen{
+    max-width: 40%;
+}
+#bedroom{
+    max-width: 40%;
+    margin-top: 10px;
+}
+#living_room{
+    max-width: 50%;
 }
 
 /* Styling for the "Buy a house" button */

@@ -1,8 +1,14 @@
-fetch("http://localhost:3000/House")
+fetch("http://localhost:3000/House1")
     .then((res) => res.json())
     .then((data) => {
-        const list = document.getElementById("sec1");
+        const list3 = document.getElementById("sec3");
+        // const two=document.getElementById("two")
+        // const one=document.getElementById("one")
         const fragment = document.createDocumentFragment(); // Use DocumentFragment
+        // const frag2=document.createDocumentFragment();
+        // const frag1=document.createDocumentFragment();
+
+
 
         data.forEach((element) => {
             // Create main container for each house listing
@@ -124,10 +130,306 @@ fetch("http://localhost:3000/House")
 
             // Append house container to fragment
             fragment.appendChild(houseContainer);
+            
+
         });
 
         // Append fragment to main list container
-        list.appendChild(fragment);
+        list3.appendChild(fragment);
+        // two.appendChild(fragment)
+        // one.appendChild(fragment);
+
+    });
+
+
+    fetch("http://localhost:3000/house2")
+    .then((res) => res.json())
+    .then((data) => {
+        const list2 = document.getElementById("sec2");
+        // const two=document.getElementById("two")
+        // const one=document.getElementById("one")
+        // const fragment = document.createDocumentFragment(); // Use DocumentFragment
+        const frag2=document.createDocumentFragment();
+        // const frag1=document.createDocumentFragment();
+
+
+
+        data.forEach((element) => {
+            // Create main container for each house listing
+            const houseContainer = document.createElement("div");
+            houseContainer.classList.add("house-container");
+
+            // Create container for image and specifications
+            const flexContainer = document.createElement("div");
+            flexContainer.classList.add("flex-container");
+
+            // Image container
+            const imgDiv = document.createElement("div");
+            imgDiv.classList.add("image-container");
+
+            // Create and append the image
+            const mainpic = document.createElement("img");
+            mainpic.src = element.mainpic;
+            mainpic.classList.add("house-image");
+            imgDiv.appendChild(mainpic);
+
+
+            const living=document.createElement("div")
+            living.id="living"
+            const kibed =document.createElement("div")
+            kibed.id="kibed"
+
+            const living_room=document.createElement("img")
+            living_room.src=element.living_room;
+            living_room.id="living_room"
+            living.appendChild(living_room)
+
+
+            const kitchen = document.createElement("img");
+            kitchen.src = element.kitchen;
+            kitchen.id="kitchen"
+            kibed.appendChild(kitchen)
+
+            const bedroom = document.createElement("img");
+            bedroom.src = element.bedroom;
+            bedroom.id="bedroom"
+            kibed.appendChild(bedroom)
+
+
+
+            living.appendChild(kibed)
+            imgDiv.appendChild(living)
+
+
+            // const kitchen=document.createElement("img")
+            // kitchen.src=element.kitchen;
+            // kitchen.id="kitchen"
+            // imgDiv.appendChild(kitchen)
+
+            // Append image container to flex container
+            flexContainer.appendChild(imgDiv);
+
+            // Details container
+            const detailsDiv = document.createElement("div");
+            detailsDiv.classList.add("details");
+
+            // Create and append the title
+            const title = document.createElement("h2");
+            title.textContent = element.title;
+            detailsDiv.appendChild(title);
+
+            // Create and append location
+            const location = document.createElement("p");
+            location.textContent = `Location: ${element.location}`;
+            detailsDiv.appendChild(location);
+
+            // Create and append slots
+            const slots = document.createElement("p");
+            slots.textContent = `Slots: ${element.slots}`;
+            detailsDiv.appendChild(slots);
+
+            // Create and append available slots
+            const availableSlots = document.createElement("p");
+            availableSlots.textContent = `Available slots: ${element.slots - element.taken_slots}`;
+            detailsDiv.appendChild(availableSlots);
+
+            // Create "Buy a house" button
+            const buyBtn = document.createElement("button");
+            buyBtn.textContent = "Buy a house";
+            buyBtn.classList.add("action-button");
+            buyBtn.addEventListener('click', () => {
+                if (element.taken_slots < element.slots) {
+                    element.taken_slots++;
+                    availableSlots.textContent = `Available slots: ${element.slots - element.taken_slots}`;
+                    alert("You just got yourself a house");
+                    if (element.taken_slots >= element.slots) {
+                        buyBtn.textContent = "SOLD OUT!";
+                        buyBtn.disabled = true;
+                    }
+                }
+            });
+            detailsDiv.appendChild(buyBtn);
+
+            // Create "Add to Cart" button
+            const cartBtn = document.createElement("button");
+            cartBtn.textContent = "Add to Cart";
+            cartBtn.classList.add("action-button");
+            cartBtn.addEventListener('click', () => addToCart(element));
+            detailsDiv.appendChild(cartBtn);
+
+
+            
+
+
+            // Create and append description
+            const description = document.createElement("p");
+            description.textContent = `Description: ${element.description}`;
+            detailsDiv.appendChild(description);
+
+            // Append details container to flex container
+            flexContainer.appendChild(detailsDiv);
+
+            // Append flex container to house container
+            houseContainer.appendChild(flexContainer);
+
+            // Append house container to fragment
+            // fragment.appendChild(houseContainer);
+            frag2.appendChild(houseContainer)
+            
+
+        });
+
+        // Append fragment to main list container
+        // list.appendChild(fragment);
+        list2.appendChild(frag2)
+        // one.appendChild(fragment);
+
+    });
+
+
+
+    fetch("http://localhost:3000/house3")
+    .then((res) => res.json())
+    .then((data) => {
+        const list1 = document.getElementById("sec1");
+        // const two=document.getElementById("two")
+        // const one=document.getElementById("one")
+        // const fragment = document.createDocumentFragment(); // Use DocumentFragment
+        // const frag2=document.createDocumentFragment();
+        const frag1=document.createDocumentFragment();
+
+
+
+        data.forEach((element) => {
+            // Create main container for each house listing
+            const houseContainer = document.createElement("div");
+            houseContainer.classList.add("house-container");
+
+            // Create container for image and specifications
+            const flexContainer = document.createElement("div");
+            flexContainer.classList.add("flex-container");
+
+            // Image container
+            const imgDiv = document.createElement("div");
+            imgDiv.classList.add("image-container");
+
+            // Create and append the image
+            const mainpic = document.createElement("img");
+            mainpic.src = element.mainpic;
+            mainpic.classList.add("house-image");
+            imgDiv.appendChild(mainpic);
+
+
+            const living=document.createElement("div")
+            living.id="living"
+            const kibed =document.createElement("div")
+            kibed.id="kibed"
+
+            const living_room=document.createElement("img")
+            living_room.src=element.living_room;
+            living_room.id="living_room"
+            living.appendChild(living_room)
+
+
+            const kitchen = document.createElement("img");
+            kitchen.src = element.kitchen;
+            kitchen.id="kitchen"
+            kibed.appendChild(kitchen)
+
+            const bedroom = document.createElement("img");
+            bedroom.src = element.bedroom;
+            bedroom.id="bedroom"
+            kibed.appendChild(bedroom)
+
+
+
+            living.appendChild(kibed)
+            imgDiv.appendChild(living)
+
+
+            // const kitchen=document.createElement("img")
+            // kitchen.src=element.kitchen;
+            // kitchen.id="kitchen"
+            // imgDiv.appendChild(kitchen)
+
+            // Append image container to flex container
+            flexContainer.appendChild(imgDiv);
+
+            // Details container
+            const detailsDiv = document.createElement("div");
+            detailsDiv.classList.add("details");
+
+            // Create and append the title
+            const title = document.createElement("h2");
+            title.textContent = element.title;
+            detailsDiv.appendChild(title);
+
+            // Create and append location
+            const location = document.createElement("p");
+            location.textContent = `Location: ${element.location}`;
+            detailsDiv.appendChild(location);
+
+            // Create and append slots
+            const slots = document.createElement("p");
+            slots.textContent = `Slots: ${element.slots}`;
+            detailsDiv.appendChild(slots);
+
+            // Create and append available slots
+            const availableSlots = document.createElement("p");
+            availableSlots.textContent = `Available slots: ${element.slots - element.taken_slots}`;
+            detailsDiv.appendChild(availableSlots);
+
+            // Create "Buy a house" button
+            const buyBtn = document.createElement("button");
+            buyBtn.textContent = "Buy a house";
+            buyBtn.classList.add("action-button");
+            buyBtn.addEventListener('click', () => {
+                if (element.taken_slots < element.slots) {
+                    element.taken_slots++;
+                    availableSlots.textContent = `Available slots: ${element.slots - element.taken_slots}`;
+                    alert("You just got yourself a house");
+                    if (element.taken_slots >= element.slots) {
+                        buyBtn.textContent = "SOLD OUT!";
+                        buyBtn.disabled = true;
+                    }
+                }
+            });
+            detailsDiv.appendChild(buyBtn);
+
+            // Create "Add to Cart" button
+            const cartBtn = document.createElement("button");
+            cartBtn.textContent = "Add to Cart";
+            cartBtn.classList.add("action-button");
+            cartBtn.addEventListener('click', () => addToCart(element));
+            detailsDiv.appendChild(cartBtn);
+
+
+            
+
+
+            // Create and append description
+            const description = document.createElement("p");
+            description.textContent = `Description: ${element.description}`;
+            detailsDiv.appendChild(description);
+
+            // Append details container to flex container
+            flexContainer.appendChild(detailsDiv);
+
+            // Append flex container to house container
+            houseContainer.appendChild(flexContainer);
+
+            // Append house container to fragment
+            // fragment.appendChild(houseContainer);
+            frag1.appendChild(houseContainer)
+            
+
+        });
+
+        // Append fragment to main list container
+        // list.appendChild(fragment);
+        list1.appendChild(frag1)
+        // one.appendChild(fragment);
+
     });
 
 

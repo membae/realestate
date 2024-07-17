@@ -1,7 +1,5 @@
 /* Flex container for house listings */
-*{
-    
-}
+
 header {
     display: flex;
     justify-content: space-between;
@@ -19,6 +17,33 @@ header h1 {
     flex-grow: 1; /* This makes the h1 element take up remaining space */
     text-align: center; /* This centers the text within the h1 */
 }
+#head1{
+    text-align: center;
+    font-size: 40px;
+    font-weight: 5000;
+}
+#three{
+    cursor: pointer;
+}
+#sec3{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#sec2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+   
+}
+#sec1{
+    background-color: green;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
 .cartIcon{
     font-size: 30px;
     margin-top: 45px;
@@ -29,7 +54,7 @@ header h1 {
     margin-right: 100px; /* This pushes the cart to the far right */
 }
 
-#sec1 {
+#sec1{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;

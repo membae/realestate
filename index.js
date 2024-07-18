@@ -1,4 +1,4 @@
-fetch("http://localhost:3000/House1")
+fetch("https://my-json-server.typicode.com/membae/realestate/House1")
     .then((res) => res.json())
     .then((data) => {
         const list3 = document.getElementById("sec3");       
@@ -122,7 +122,7 @@ fetch("http://localhost:3000/House1")
      });
 
 
-    fetch("http://localhost:3000/house2")
+    fetch("https://my-json-server.typicode.com/membae/realestate/house2")
     .then((res) => res.json())
     .then((data) => {
         const list2 = document.getElementById("sec2");
@@ -246,7 +246,7 @@ fetch("http://localhost:3000/House1")
 
 
 
-    fetch("http://localhost:3000/house3")
+    fetch("https://my-json-server.typicode.com/membae/realestate/house3")
     .then((res) => res.json())
     .then((data) => {
         const list1 = document.getElementById("sec1");

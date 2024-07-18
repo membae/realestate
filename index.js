@@ -1,15 +1,9 @@
 fetch("http://localhost:3000/House1")
     .then((res) => res.json())
     .then((data) => {
-        const list3 = document.getElementById("sec3");
-        // const two=document.getElementById("two")
-        // const one=document.getElementById("one")
+        const list3 = document.getElementById("sec3");       
         const fragment = document.createDocumentFragment(); // Use DocumentFragment
-        // const frag2=document.createDocumentFragment();
-        // const frag1=document.createDocumentFragment();
-
-
-
+       
         data.forEach((element) => {
             // Create main container for each house listing
             const houseContainer = document.createElement("div");
@@ -51,17 +45,9 @@ fetch("http://localhost:3000/House1")
             bedroom.id="bedroom"
             kibed.appendChild(bedroom)
 
-
-
             living.appendChild(kibed)
             imgDiv.appendChild(living)
-
-
-            // const kitchen=document.createElement("img")
-            // kitchen.src=element.kitchen;
-            // kitchen.id="kitchen"
-            // imgDiv.appendChild(kitchen)
-
+       
             // Append image container to flex container
             flexContainer.appendChild(imgDiv);
 
@@ -111,10 +97,7 @@ fetch("http://localhost:3000/House1")
             cartBtn.textContent = "Add to Cart";
             cartBtn.classList.add("action-button");
             cartBtn.addEventListener('click', () => addToCart(element));
-            detailsDiv.appendChild(cartBtn);
-
-
-            
+            detailsDiv.appendChild(cartBtn);           
 
 
             // Create and append description
@@ -136,24 +119,15 @@ fetch("http://localhost:3000/House1")
 
         // Append fragment to main list container
         list3.appendChild(fragment);
-        // two.appendChild(fragment)
-        // one.appendChild(fragment);
-
-    });
+     });
 
 
     fetch("http://localhost:3000/house2")
     .then((res) => res.json())
     .then((data) => {
         const list2 = document.getElementById("sec2");
-        // const two=document.getElementById("two")
-        // const one=document.getElementById("one")
-        // const fragment = document.createDocumentFragment(); // Use DocumentFragment
         const frag2=document.createDocumentFragment();
-        // const frag1=document.createDocumentFragment();
-
-
-
+       
         data.forEach((element) => {
             // Create main container for each house listing
             const houseContainer = document.createElement("div");
@@ -195,16 +169,8 @@ fetch("http://localhost:3000/House1")
             bedroom.id="bedroom"
             kibed.appendChild(bedroom)
 
-
-
             living.appendChild(kibed)
             imgDiv.appendChild(living)
-
-
-            // const kitchen=document.createElement("img")
-            // kitchen.src=element.kitchen;
-            // kitchen.id="kitchen"
-            // imgDiv.appendChild(kitchen)
 
             // Append image container to flex container
             flexContainer.appendChild(imgDiv);
@@ -257,10 +223,6 @@ fetch("http://localhost:3000/House1")
             cartBtn.addEventListener('click', () => addToCart(element));
             detailsDiv.appendChild(cartBtn);
 
-
-            
-
-
             // Create and append description
             const description = document.createElement("p");
             description.textContent = `Description: ${element.description}`;
@@ -273,17 +235,13 @@ fetch("http://localhost:3000/House1")
             houseContainer.appendChild(flexContainer);
 
             // Append house container to fragment
-            // fragment.appendChild(houseContainer);
             frag2.appendChild(houseContainer)
             
 
         });
 
-        // Append fragment to main list container
-        // list.appendChild(fragment);
         list2.appendChild(frag2)
-        // one.appendChild(fragment);
-
+        
     });
 
 
@@ -292,13 +250,7 @@ fetch("http://localhost:3000/House1")
     .then((res) => res.json())
     .then((data) => {
         const list1 = document.getElementById("sec1");
-        // const two=document.getElementById("two")
-        // const one=document.getElementById("one")
-        // const fragment = document.createDocumentFragment(); // Use DocumentFragment
-        // const frag2=document.createDocumentFragment();
         const frag1=document.createDocumentFragment();
-
-
 
         data.forEach((element) => {
             // Create main container for each house listing
@@ -345,12 +297,6 @@ fetch("http://localhost:3000/House1")
 
             living.appendChild(kibed)
             imgDiv.appendChild(living)
-
-
-            // const kitchen=document.createElement("img")
-            // kitchen.src=element.kitchen;
-            // kitchen.id="kitchen"
-            // imgDiv.appendChild(kitchen)
 
             // Append image container to flex container
             flexContainer.appendChild(imgDiv);
@@ -403,10 +349,6 @@ fetch("http://localhost:3000/House1")
             cartBtn.addEventListener('click', () => addToCart(element));
             detailsDiv.appendChild(cartBtn);
 
-
-            
-
-
             // Create and append description
             const description = document.createElement("p");
             description.textContent = `Description: ${element.description}`;
@@ -419,28 +361,17 @@ fetch("http://localhost:3000/House1")
             houseContainer.appendChild(flexContainer);
 
             // Append house container to fragment
-            // fragment.appendChild(houseContainer);
             frag1.appendChild(houseContainer)
             
 
         });
 
-        // Append fragment to main list container
-        // list.appendChild(fragment);
+      
         list1.appendChild(frag1)
-        // one.appendChild(fragment);
 
     });
-
-
-
-
     //creare show cart btn
-
     
-
-
-
 // Define your cart array to hold items
 let cart = [];
 
@@ -509,11 +440,7 @@ function insertShowCartButton() {
 }
 
 // Dummy data to simulate fetching real estate listings
-const dummyData = [
-    // { title: "House 1", image: "house1.jpg" },
-    // { title: "House 2", image: "house2.jpg" },
-    // Add more items as needed
-];
+const dummyData = [];
 
 // Simulate fetching real estate listings and adding to cart
 dummyData.forEach(item => addToCart(item));
